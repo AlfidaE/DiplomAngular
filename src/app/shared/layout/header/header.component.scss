@@ -1,0 +1,61 @@
+@import "../../../../assets/styles/variables";
+header.header {
+  padding: 40px 0 40px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .header-content {
+      padding-top: 11px;
+      padding-bottom: 12px;
+      display: flex;
+      align-items: center;
+
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+
+      .header-menu {
+        margin-left: 100px;
+        margin-right: 227px;
+
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+
+          li {
+            margin-right: 30px;
+            list-style: none;
+
+            a {
+              color: $base-text-color;
+              cursor: pointer;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      .header-phone {
+        color: $blue-text-color;
+        text-decoration: none;
+        margin-right: 141px;
+      }
+      .header-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+          margin-right: 7px;
+
+        }
+        span {
+          color: $base-text-color;
+        }
+      }
+
+    }
+
+  }
+}

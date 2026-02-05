@@ -1,0 +1,117 @@
+@import "../../../../assets/styles/variables";
+
+footer.footer {
+  padding-top: 40px;
+  padding-bottom: 54px;
+  background-color: #B9D5FD;
+
+
+  .container {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+
+      a.logo {
+        margin-right: 40px;
+      }
+      .footer-menu {
+        margin-left: 40px;
+        display: flex;
+
+        nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+
+          li {
+            margin-right: 20px;
+            list-style: none;
+
+            a {
+              color: $base-text-color;
+              cursor: pointer;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-middle {
+      display: flex;
+      margin-bottom: 6px;
+
+      .footer-middle-block {
+        margin-right: 60px;
+
+        &.footer-address-block {
+          max-width: 253px;
+        }
+        &.footer-phone-block {
+          max-width: 153px;
+        }
+        &.footer-email-block {
+          max-width: 127px;
+        }
+        &.footer-info-block {
+          max-width: 203px;
+        }
+        .footer-head {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 500;
+          font-size: 16px;
+          color: $blue-text-color;
+          margin-bottom: 10px;
+        }
+        .footer-items {
+          color: $base-text-color;
+        }
+        .footer-phone {
+          text-decoration: none;
+          color: $base-text-color;
+          margin-bottom: 10px;
+        }
+        button {
+          width: 153px;
+          height: 36px;
+          border-radius: 5px;
+          padding: 10px 20px;
+          background-color: $blue-text-color;
+          border: none;
+          cursor: pointer;
+
+          margin-top: 10px;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 500;
+          font-size: 12px;
+          color: #FFFFFF;
+          display: flex;
+          align-items: center;
+
+
+        }
+        .footer-email {
+          font-size: 14px;
+          text-decoration: none;
+          color: $base-text-color;
+        }
+        .footer-social a {
+          margin-right: 12px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .footer-copyright {
+      color: $blue-text-color;
+      text-decoration: none;
+    }
+
+  }
+}
