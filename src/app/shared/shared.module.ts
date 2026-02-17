@@ -13,6 +13,8 @@ import { PopupCardComponent } from './components/popup-card/popup-card.component
 import {MatDialogModule} from "@angular/material/dialog";
 import {CleanCurrencyPipe} from "./pipes/clean-currency.pipe";
 import {PopupRingCardComponent} from "./components/popup-ring-card/popup-ring-card.component";
+import {CommentCardComponent} from "./components/comment-card/comment-card.component";
+import { RtfViewerComponent } from './components/rtf-viewer/rtf-viewer.component';
 
 
 @NgModule({
@@ -20,11 +22,14 @@ import {PopupRingCardComponent} from "./components/popup-ring-card/popup-ring-ca
     StrLimiterPipe,
     ArticleCardComponent,
     ReviewCardComponent,
+    CommentCardComponent,
     SaveHtmlPipe,
     CleanCurrencyPipe,
+    RtfViewerComponent,
     ServiceCardComponent,
     PopupCardComponent,
     PopupRingCardComponent,
+
   ],
 
   imports: [
@@ -34,7 +39,7 @@ import {PopupRingCardComponent} from "./components/popup-ring-card/popup-ring-ca
     ReactiveFormsModule,
     FormsModule,
     UserRoutingModule,
-    MatDialogModule,
+    MatDialogModule
 
   ],
   exports: [
@@ -43,8 +48,8 @@ import {PopupRingCardComponent} from "./components/popup-ring-card/popup-ring-ca
     ReviewCardComponent,
     SaveHtmlPipe,
     ServiceCardComponent,
-
-
+    RtfViewerComponent,
+    CommentCardComponent
 
 
   ]

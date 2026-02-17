@@ -1,12 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService} from "../../../core/auth/auth.service";
-import {UserInfoType} from "../../../../types/user-info.type";
+
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-import {UserInfoService} from "../../services/user-info.service";
+
 import {Subscription} from "rxjs";
-import {DefaultResponseType} from "../../../../types/default-response.type";
+
 import {HttpErrorResponse} from "@angular/common/http";
+import {UserInfoType} from "../../../../types/user-info.type";
+import {AuthService} from "../../../core/auth/auth.service";
+import {UserInfoService} from "../../services/user-info.service";
+import {DefaultResponseType} from "../../../../types/default-response.type";
 
 @Component({
   selector: 'app-header',

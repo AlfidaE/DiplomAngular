@@ -4,7 +4,6 @@ import {HexRtfParserService} from "../../services/hex-rtf-parser.service";
 @Component({
   selector: 'app-rtf-viewer',
   templateUrl: './rtf-viewer.component.html',
-  standalone: true,
   styleUrls: ['./rtf-viewer.component.scss']
 })
 export class RtfViewerComponent {

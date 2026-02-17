@@ -1,0 +1,51 @@
+<section class="signup">
+  <div class="container">
+    <div class="auth__form" [formGroup]="signupForm">
+      <div class="auth__form-title">Регистрация на сайте</div>
+      <div class="auth__form-inputs">
+        <div class="auth__form-input">
+          <input type="text" class="input" placeholder="Ваше имя"
+                 [ngStyle]="{'border-color': name?.invalid && (name?.dirty || name?.touched) ? 'red' : ''}"
+                 formControlName="name" name="">
+        </div>
+        <div class="auth__form-input">
+          <input type="text" class="input" placeholder="Электронная почта"
+                 [ngStyle]="{'border-color': email?.invalid && (email?.dirty || email?.touched) ? 'red' : ''}"
+                 formControlName="email" name="">
+        </div>
+        <div class="auth__form-input">
+          <input type="password" class="input" placeholder="Пароль"
+                 [ngStyle]="{'border-color': password?.invalid && (password?.dirty || password?.touched) ? 'red' : ''}"
+                 formControlName="password" name="">
+        </div>
+        <div class="auth__form-checkbox">
+          <input type="checkbox" name="" id="agree" formControlName="agree">
+          <label for="agree">
+            Я принимаю
+            <app-rtf-viewer
+              [filePath]="'assets/documents/Policy.rtf'"
+              [anchorId]="'agreement'"
+              [linkText]="'условия пользовательского соглашения'">
+            </app-rtf-viewer>
+            и даю
+            <app-rtf-viewer
+              [filePath]="'assets/documents/Policy.rtf'"
+              [anchorId]="'privacy'"
+              [linkText]="'согласие на обработку персональных данных.'">
+            </app-rtf-viewer>
+          </label>
+        </div>
+      </div>
+      <div class="auth__form-action">
+        <button class="button" [disabled]="signupForm.invalid" (click)="signup()">Зарегистрироваться</button>
+      </div>
+      <div class="auth__form-link">Уже есть аккаунт?
+        <a routerLink="/login">Войдите</a>
+      </div>
+    </div>
+    <div class="page__image">
+      <img src="/assets/images/pages/signup.png" alt="Image signup">
+    </div>
+  </div>
+</section>
+

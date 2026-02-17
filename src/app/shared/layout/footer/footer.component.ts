@@ -1,8 +1,10 @@
 import { Component,  } from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {PopupRingCardComponent} from "../../components/popup-ring-card/popup-ring-card.component";
+
 import {take} from "rxjs";
+import {PopupRingCardComponent} from "../../components/popup-ring-card/popup-ring-card.component";
+
 
 @Component({
   selector: 'app-footer',

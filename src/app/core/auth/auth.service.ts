@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject, throwError} from "rxjs";
+import {Observable, of, Subject, throwError} from "rxjs";
 import {DefaultResponseType} from "../../../types/default-response.type";
 import {LoginResponseType} from "../../../types/login-response.type";
 import {HttpClient} from "@angular/common/http";
@@ -18,6 +18,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.isLogged = !!localStorage.getItem(this.accessTokenKey);
+
+    this.checkAuth().subscribe();
   }
 
   login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponseType | LoginResponseType> {
@@ -77,7 +79,32 @@ export class AuthService {
       localStorage.removeItem(this.userIdKey);
     }
   }
+  public refresh(): Observable<LoginResponseType | DefaultResponseType> {
+    const tokens = this.getTokens();
+    if (tokens && tokens.refreshToken) {
+      return this.http.post<LoginResponseType | DefaultResponseType>(environment.api + 'refresh', {
+        refreshToken: tokens.refreshToken
+      })
+    }
+    return throwError(() => new Error('Can not find token'));
+  }
 
+
+
+  private checkAuth(): Observable<boolean> {
+    const tokens = this.getTokens();
+    const isAuthenticated = !!(tokens.accessToken && tokens.refreshToken);
+
+    if (!isAuthenticated) {
+      this.isLogged$.next(false);
+    }
+
+    return of(isAuthenticated);
+  }
+
+  private isDefaultResponseType(response: any): response is DefaultResponseType {
+    return (response as DefaultResponseType).error !== undefined;
+  };
 
 }
 
