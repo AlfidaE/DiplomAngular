@@ -15,6 +15,7 @@ import {CleanCurrencyPipe} from "./pipes/clean-currency.pipe";
 import {PopupRingCardComponent} from "./components/popup-ring-card/popup-ring-card.component";
 import {CommentCardComponent} from "./components/comment-card/comment-card.component";
 import { RtfViewerComponent } from './components/rtf-viewer/rtf-viewer.component';
+import {SpinnerComponent} from "./components/spiner/spinner.component";
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { RtfViewerComponent } from './components/rtf-viewer/rtf-viewer.component
     ServiceCardComponent,
     PopupCardComponent,
     PopupRingCardComponent,
-
+    SpinnerComponent,
   ],
 
   imports: [
@@ -49,8 +50,8 @@ import { RtfViewerComponent } from './components/rtf-viewer/rtf-viewer.component
     SaveHtmlPipe,
     ServiceCardComponent,
     RtfViewerComponent,
-    CommentCardComponent
-
+    CommentCardComponent,
+    SpinnerComponent,
 
   ]
 })
