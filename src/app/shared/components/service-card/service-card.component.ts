@@ -1,9 +1,9 @@
 import {Component, inject, Input} from '@angular/core';
-import {ServiceDbCardType} from "../../../../types/service-db-card.type";
+import {ServiceCardType} from "../../../../types/service-card.type";
+import {PopupCardComponent} from "../popup-card/popup-card.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {take} from "rxjs";
-import {PopupCardComponent} from "../popup-card/popup-card.component";
 
 @Component({
   selector: 'app-service-card',
@@ -11,7 +11,7 @@ import {PopupCardComponent} from "../popup-card/popup-card.component";
   styleUrls: ['./service-card.component.scss']
 })
 export class ServiceCardComponent {
-  @Input() serviceM!: ServiceDbCardType;
+  @Input() serviceM!: ServiceCardType;
   dialogRef: MatDialogRef<any> | null = null;
 
   private dialog = inject(MatDialog);

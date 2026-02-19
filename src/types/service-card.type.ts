@@ -1,4 +1,4 @@
-export type ServiceDbCardType = {
+export type ServiceCardType = {
   id: number,
   image: string,
   title: string,

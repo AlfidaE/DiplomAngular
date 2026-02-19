@@ -3,9 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ArticleType} from "../../../types/article.type";
 import {environment} from "../../../environments/environment";
-
-import {DefaultResponseType} from "../../../types/default-response.type";
 import {ActiveParamsType} from "../../../types/active-params.type";
+import {DefaultResponseType} from "../../../types/default-response.type";
 import {ArticleDetailType} from "../../../types/article-detail.type";
 
 @Injectable({

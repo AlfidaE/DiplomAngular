@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ReviewCardType} from "../../../../types/review-card.type";
 
 @Component({
@@ -6,13 +6,6 @@ import {ReviewCardType} from "../../../../types/review-card.type";
   templateUrl: './review-card.component.html',
   styleUrls: ['./review-card.component.scss']
 })
-export class ReviewCardComponent implements OnInit {
-
-  @Input() review: ReviewCardType | null = null;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class ReviewCardComponent {
+  @Input() review!: ReviewCardType;
 }

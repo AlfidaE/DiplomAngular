@@ -1,30 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import {ArticleService} from "../../shared/services/article.service";
-import {ArticleType} from "../../../types/article.type";
+import {Component, inject, OnDestroy, OnInit, } from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
-import {ReviewCardType} from "../../../types/review-card.type";
-import {ReviewService} from "../../shared/services/review.service";
-import {SliderMainType} from "../../../types/slider-main.type";
 import {SliderMainDbService} from "../../shared/services/slider-main-db.service";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {PopupCardComponent} from "../../shared/components/popup-card/popup-card.component";
-import {take} from "rxjs";
-import {Router} from "@angular/router";
-import {ServiceDbCardType} from "../../../types/service-db-card.type";
+import {SliderMainType} from "../../../types/slider-main.type";
 import {ServiceDbService} from "../../shared/services/service-db.service";
+import {ServiceCardType} from "../../../types/service-card.type";
+import {ArticleType} from "../../../types/article.type";
+import {ArticleService} from "../../shared/services/article.service";
+import {HttpErrorResponse} from "@angular/common/http";
+import {ReviewService} from "../../shared/services/review.service";
+import {ReviewCardType} from "../../../types/review-card.type";
+import {Router} from "@angular/router";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {take} from "rxjs";
+import {PopupCardComponent} from "../../shared/components/popup-card/popup-card.component";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
-
-  topSliders: SliderMainType[] = [];
-  articles: ArticleType[] = [];
-  reviews: ReviewCardType[] = [];
-  dialogRef: MatDialogRef<any> | null = null;
-  servicesMain: ServiceDbCardType[] = [];
+export class MainComponent implements OnInit, OnDestroy {
 
   customOptionsMain: OwlOptions = {
     loop: true,
@@ -48,7 +43,6 @@ export class MainComponent implements OnInit {
     },
     nav: false,
   }
-
   customOptionsReviews: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -71,26 +65,35 @@ export class MainComponent implements OnInit {
     },
     nav: false,
   }
+  topSliders: SliderMainType[] = [];
+  servicesMain: ServiceCardType[] = [];
+  articles: ArticleType[] = [];
+  reviews: ReviewCardType[] = [];
+  dialogRef: MatDialogRef<any> | null = null;
 
-  constructor(private articleService: ArticleService,
-              private reviewService: ReviewService,
-              private slidersMain: SliderMainDbService,
-              private dialog: MatDialog,
-              private servicesDbServices: ServiceDbService,
-              private router: Router,) { }
+  private slidersMain = inject(SliderMainDbService);
+  private servicesDbServices = inject(ServiceDbService);
+  private articleService = inject(ArticleService);
+  private reviewService = inject(ReviewService);
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
+
 
   ngOnInit(): void {
     this.topSliders = this.slidersMain.getSliderMain();
     this.servicesMain = this.servicesDbServices.getServicesMain();
-    this.articleService.getTopArticles()
-      .subscribe((data: ArticleType[]) => {
-        this.articles = data;
-      })
-
     this.reviews = this.reviewService.getReviews();
+
+    this.articleService.getTopArticles()
+      .subscribe({
+        next: (data: ArticleType[] ) => {
+          this.articles = data;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+        }
+      })
   }
-
-
 
   moreDetails(service: string) {
     this.dialogRef = this.dialog.open(PopupCardComponent, {
@@ -114,6 +117,13 @@ export class MainComponent implements OnInit {
         this.dialogRef?.close();
         this.router.navigate(['/']);
       });
+  }
+
+
+  ngOnDestroy() {
+    // this.destroy$.next();
+    // this.destroy$.complete();
+    // this.dialogRef?.close();
   }
 
 }

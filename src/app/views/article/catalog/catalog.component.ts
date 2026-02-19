@@ -8,10 +8,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {CategoryService} from "../../../shared/services/category.service";
 import {CategoryType} from "../../../../types/category.type";
 import {debounceTime, tap} from "rxjs";
-
+import {ActiveParamsUtil} from "../../../shared/util/active-params.util";
 import {AppliedFilterType} from "../../../../types/applied-filter.type";
 import {SpinnerService} from "../../../shared/services/spinner.service";
-import {ActiveParamsUtil} from "../../../shared/util/active-params.util";
 
 @Component({
   selector: 'app-catalog',

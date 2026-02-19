@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {ReviewCardType} from "../../../types/review-card.type";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,7 @@ export class ReviewService {
 
   constructor() { }
 
-  getReviews(): ReviewCardType[] {
+  getReviews() {
     return [
       {
         name: "Станислав",

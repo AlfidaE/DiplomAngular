@@ -1,59 +1,51 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from "@angular/router";
-import {StrLimiterPipe} from "./pipes/str-limiter.pipe";
-import {MatMenuModule} from "@angular/material/menu";
-import {ArticleCardComponent} from './components/article-card/article-card.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {ReviewCardComponent} from './components/review-card/review-card.component';
-import {UserRoutingModule} from "../views/user/user-routing.module";
-import {SaveHtmlPipe} from "./pipes/save-html.pipe";
-import {ServiceCardComponent} from "./components/service-card/service-card.component";
-import { PopupCardComponent } from './components/popup-card/popup-card.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {CleanCurrencyPipe} from "./pipes/clean-currency.pipe";
-import {PopupRingCardComponent} from "./components/popup-ring-card/popup-ring-card.component";
-import {CommentCardComponent} from "./components/comment-card/comment-card.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SaveHtmlPipe } from './pipes/save-html.pipe';
+import { ServiceCardComponent } from './components/service-card/service-card.component';
+import { RouterModule} from "@angular/router";
+import { CleanCurrencyPipe } from './pipes/clean-currency.pipe';
+import { ArticleCardComponent } from './components/article-card/article-card.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
+import { StrLimiterPipe } from './pipes/str-limiter.pipe';
 import { RtfViewerComponent } from './components/rtf-viewer/rtf-viewer.component';
-import {SpinnerComponent} from "./components/spiner/spinner.component";
-
+import { CommentCardComponent } from './components/comment-card/comment-card.component';
+import { PopupCardComponent } from './components/popup-card/popup-card.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { PopupRingCardComponent } from './components/popup-ring-card/popup-ring-card.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {SpinnerComponent} from './components/spiner/spinner.component';
 
 @NgModule({
   declarations: [
-    StrLimiterPipe,
+    SaveHtmlPipe,
+    ServiceCardComponent,
+    CleanCurrencyPipe,
     ArticleCardComponent,
     ReviewCardComponent,
-    CommentCardComponent,
-    SaveHtmlPipe,
-    CleanCurrencyPipe,
+    StrLimiterPipe,
     RtfViewerComponent,
-    ServiceCardComponent,
+    CommentCardComponent,
     PopupCardComponent,
     PopupRingCardComponent,
     SpinnerComponent,
   ],
-
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatMenuModule,
-    ReactiveFormsModule,
-    FormsModule,
-    UserRoutingModule,
-    MatDialogModule
-
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+    ],
   exports: [
+    SaveHtmlPipe,
     StrLimiterPipe,
+    ServiceCardComponent,
     ArticleCardComponent,
     ReviewCardComponent,
-    SaveHtmlPipe,
-    ServiceCardComponent,
     RtfViewerComponent,
     CommentCardComponent,
     SpinnerComponent,
-
-  ]
+  ],
+  providers: []
 })
-export class SharedModule {
-}
+export class SharedModule { }

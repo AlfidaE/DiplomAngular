@@ -2,9 +2,9 @@ import {Component, Inject, inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 import {RequestsModalService} from "../../services/requests-modal.service";
+import {ServiceParamsType} from "../../../../types/service-params.type";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpErrorResponse} from "@angular/common/http";
-import {ServiceParamsType} from "../../../../types/service-params.type";
 
 @Component({
   selector: 'app-popup-card',

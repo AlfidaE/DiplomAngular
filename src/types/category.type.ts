@@ -3,4 +3,3 @@ export type CategoryType = {
   name: string,
   url: string
 }
-

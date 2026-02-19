@@ -1,15 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {AuthService} from "../../core/auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-
-import {Subscription} from "rxjs";
-
+import {UserInfoService} from "../services/user-info.service";
+import {DefaultResponseType} from "../../../types/default-response.type";
+import {UserInfoType} from "../../../types/user-info.type";
 import {HttpErrorResponse} from "@angular/common/http";
-import {UserInfoType} from "../../../../types/user-info.type";
-import {AuthService} from "../../../core/auth/auth.service";
-import {UserInfoService} from "../../services/user-info.service";
-import {DefaultResponseType} from "../../../../types/default-response.type";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -18,22 +15,18 @@ import {DefaultResponseType} from "../../../../types/default-response.type";
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  private authService = inject(AuthService);
+  private userInfoService = inject(UserInfoService);
+  private _snackBar = inject(MatSnackBar);
+  private router = inject(Router);
+  private subscriptions: Subscription = new Subscription();
   isLogged: boolean = false;
   userInfo: UserInfoType | null = null;
-
-  private subscriptions: Subscription = new Subscription();
-
-  constructor(private authService: AuthService,
-              private _snackBar: MatSnackBar,
-              private userInfoService: UserInfoService,
-              private router: Router) {
-    this.isLogged = this.authService.getIsLoggedIn();
-  }
 
   ngOnInit(): void {
     this.subscriptions.add(this.authService.isLogged$.subscribe((isLogged: boolean) => {
         this.isLogged = isLogged;
-
+        // console.log(this.isLogged)
         if (isLogged) {
           this.loadUserInfo();
         } else {
@@ -60,7 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             throw new Error(error);
           }
           this.userInfo = userInfo;
-
+          // console.log(this.userInfo)
         },
         error: (err: HttpErrorResponse) => {
           if (err.error && err.error.message) {
@@ -74,6 +67,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       })
     );
   }
+
 
   logout(): void {
     this.subscriptions.add(this.authService.logout()
@@ -91,18 +85,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   doLogout(): void {
     this.authService.removeTokens();
-    this.userInfo = null;
     this._snackBar.open('Вы успешно вышли из системы');
     this.router.navigate(['/']);
-
-    if (this.router.url !== '/') {
-      this.router.navigate(['/']);
-    }
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+
+
 }
-
-

@@ -1,5 +1,5 @@
-import {Component, inject} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject, inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ServiceParamsType} from "../../../../types/service-params.type";
 import {HttpErrorResponse} from "@angular/common/http";

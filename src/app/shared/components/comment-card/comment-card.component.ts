@@ -26,23 +26,6 @@ export class CommentCardComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    // this.commentsService.getActionComment(this.comment.id)
-    //   .subscribe({
-    //     next: (data: CommentActionType[] | DefaultResponseType) => {
-    //       if ((data as DefaultResponseType).error !== undefined) {
-    //         const error = (data as DefaultResponseType).message;
-    //         throw new Error(error);
-    //       }
-    //       this.handleCommentAction(data as CommentActionType[]);
-    //     },
-    //     error: (err: HttpErrorResponse) => {
-    //       if (err.error && err.error.message) {
-    //         console.log(err.error.message)
-    //       } else {
-    //         console.log('Ошибка ответа от сервера')
-    //       }
-    //     }
-    //   })
 
     this.handleCommentAction2();
   }
@@ -68,30 +51,6 @@ export class CommentCardComponent implements OnInit {
     }
   }
 
-  // handleCommentAction(actionData: CommentActionType[]): void {
-  //   for (let aData of actionData) {
-  //     switch (aData.action) {
-  //       case userCommentActions.like:
-  //         this.liked = true;
-  //         this.like = 0;
-  //         this.dislike = 1;
-  //         this.disliked = false;
-  //         // console.log("Лайк комментария:", aData.comment);
-  //         break;
-  //       case userCommentActions.dislike:
-  //         this.disliked = true;
-  //         this.like = 1;
-  //         this.dislike = 0;
-  //         this.liked = false;
-  //         // console.log("Дизлайк комментария:", aData.comment);
-  //         break;
-  //       case userCommentActions.violate:
-  //         this.violate = true;
-  //         // console.log("Жалоба на комментарий:", aData.comment);
-  //         break;
-  //     }
-  //   }
-  // }
 
   updateAction(actionType: 'like' | 'dislike'): void {
     if (!this.authService.getIsLoggedIn()) {
